@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## Getting Started
 
 Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
@@ -20,3 +21,6 @@ The `JAVA PROJECTS` view allows you to manage your dependencies. More details ca
 =======
 # MiniProyecto1
 >>>>>>> b2c9375 (Initial commit)
+=======
+# Mini Proyecto (POE)
+>>>>>>> de60d65 (Update README.md)
