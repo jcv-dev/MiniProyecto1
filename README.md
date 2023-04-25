@@ -16,6 +16,6 @@ Asimismo, tras terminar la inserción y eliminación de mascotas, el usuario pod
 
 Integrantes:
 
-— Juan Pablo Escobar Viveros [1234567]
+— Juan Pablo Escobar Viveros [2259519]
 
 — Juan Camilo Valencia Rivas [2259459]
