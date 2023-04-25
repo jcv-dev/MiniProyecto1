@@ -10,6 +10,7 @@ public abstract class Mascota {
     private byte dientes;
     private String color;
     private boolean vacunaMalota;
+    private String sexo;
 
 
     public Mascota(String nombre, byte edad, byte vacunasAplicadas, float costo, String paisOrigen, byte dientes, String color, boolean vacunaMalota) {
