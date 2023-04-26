@@ -11,9 +11,14 @@ public abstract class Mascota {
     private String color;
     private boolean vacunaMalota;
     private String sexo;
+    private byte id;
 
 
-    public Mascota(String nombre, byte edad, byte vacunasAplicadas, float costo, String paisOrigen, byte dientes, String color, boolean vacunaMalota, String sexo) {
+    public byte getId() {
+        return id;
+    }
+
+    public Mascota(String nombre, byte edad, byte vacunasAplicadas, float costo, String paisOrigen, byte dientes, String color, boolean vacunaMalota, String sexo, byte id) {
         this.nombre = nombre;
         this.edad = edad;
         this.vacunasAplicadas = vacunasAplicadas;
@@ -23,6 +28,7 @@ public abstract class Mascota {
         this.color = color;
         this.vacunaMalota = vacunaMalota;
         this.sexo = sexo;
+        this.id = id;
     }
 
     public abstract void sonido();

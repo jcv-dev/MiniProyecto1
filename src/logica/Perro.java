@@ -18,9 +18,9 @@ public class Perro extends Mascota{
         System.out.println("El perro levanta la pata para orinar.");
     }
 
-    public Perro(String nombre, byte edad, byte vacunasAplicadas, float costo, String paisOrigen, byte dientes, String color, boolean vacunaMalota, String sexo, byte caminatasPorSemana) {
+    public Perro(String nombre, byte edad, byte vacunasAplicadas, float costo, String paisOrigen, byte dientes, String color, boolean vacunaMalota, String sexo, byte caminatasPorSemana, byte id) {
 
-        super(nombre, edad, vacunasAplicadas, costo, paisOrigen, dientes, color, vacunaMalota, sexo);
+        super(nombre, edad, vacunasAplicadas, costo, paisOrigen, dientes, color, vacunaMalota, sexo, id);
         this.caminatasPorSemana = caminatasPorSemana;
     }
 
