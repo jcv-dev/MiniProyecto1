@@ -1,8 +1,8 @@
 package principal;
-import logica.Mascota;
 import logica.Perro;
 import logica.Gato;
 import java.util.Scanner;
+import java.util.List;
 import java.io.IOException;
 import java.util.ArrayList;
 
