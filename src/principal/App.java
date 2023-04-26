@@ -9,14 +9,14 @@ import java.util.List;
 public class App {
 
     static Scanner scanner = new Scanner(System.in);
-    static List<Gato> gatos = new ArrayList<Gato>();
-    static List<Perro> perros = new ArrayList<Perro>();
+    static List<Gato> gatos = new ArrayList<Gato>(), gatosCostosos = new ArrayList<Gato>();
+    static List<Perro> perros = new ArrayList<Perro>(), perrosCostosos = new ArrayList<Perro>();
     static String nombreMascota, paisMascota, colorMascota, sexoMascota, lecheFavorita;
     static int tipoMascota, opcion = 0, seleccionBooleano;
     static float costoMascota;
     static boolean vacunaMalota;
     static byte edadMascota, dientesMascota, vacunasMascota, caminatasMascota, idMascota = 0;
-
+    static List<String> paisesLatam = new ArrayList<String>();
 
     public static void menuPrincipal() {
         while(true){
@@ -52,6 +52,7 @@ public class App {
                 listarMascotas();
                 break;
             case 6:
+                pantallaFinal();
                 break;
             default:
                 System.out.println("Opcion no valida");
@@ -430,7 +431,6 @@ public class App {
 
     public static void buscarMascotaPorNombre() {
 
-
         clrscr();
 
         System.out.print("Ingrese el nombre de la mascota que desea buscar:");
@@ -540,7 +540,262 @@ public class App {
         }
     }
 
-    
+
+    public static void mascotasConMalota(){
+
+        clrscr();
+
+        System.out.println("******************************************************************************************************************************************");
+        // Imprimir gatos
+        System.out.println("GATOS CON VACUNA MALOTA: \n");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-4s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %n", 
+        "Id", "Nombre", "Edad", "Sexo", "Vacunas", "Costo", "Pais", "Dientes", "Color", "Malota", "Leche");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        if(gatos.size() >= 1){
+        for(Gato gato: gatos) {
+
+            if(gato.isVacunaMalota() == true){
+            System.out.printf("| %-4s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s |%n", 
+            gato.getId(), gato.getNombre(), gato.getEdad() + " anio(s)", gato.getSexo(), gato.getVacunasAplicadas(), gato.getCosto(), gato.getPaisOrigen(), gato.getDientes(), gato.getColor(), gato.isVacunaMalota(), gato.getLecheFavorita());
+            }
+        }
+        }else{
+            System.out.println("No hay gatos con vacuna malota.");
+        }
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+
+        System.out.print("\n \n");
+
+
+        // Imprimir perros
+        System.out.println("PERROS CON VACUNA MALOTA: \n");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-4s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %n", "Id", "Nombre", "Edad", "Sexo", "Vacunas", "Costo", "Pais", "Dientes", "Color", "Malota", "Caminatas");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        if(perros.size() >= 1){
+            for(Perro perro: perros) {
+
+                if(perro.isVacunaMalota() == true){
+                System.out.printf("| %-4s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s |%n", 
+                perro.getId(), perro.getNombre(), perro.getEdad() + " anio(s)", perro.getSexo(), perro.getVacunasAplicadas(), perro.getCosto(), perro.getPaisOrigen(), perro.getDientes(), perro.getColor(), perro.isVacunaMalota(), perro.getCaminatasPorSemana());
+                }
+                }
+            }else{
+                System.out.println("No hay perros con vacuna malota.");
+            }
+            System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        
+        System.out.print("\n \n");
+        
+        System.out.println("Presione ENTER para volver al menu.");
+        scanner.nextLine();
+        pantallaFinal();
+    }
+
+
+    public static void mascotasMasCostosas(){
+
+        for(int i = 0; i < 5; i++){
+
+            if (gatos.size() > 0){
+                
+                gatosCostosos.add(gatoMasCostoso());
+                gatos.remove(gatoMasCostoso());
+            }else{
+                break;
+            }
+        }
+
+        for(int i = 0; i < 5; i++){
+
+            if (perros.size() > 0){
+                
+                perrosCostosos.add(perroMasCostoso());
+                perros.remove(perroMasCostoso());
+            }else{
+                break;
+            }
+        }
+    }
+
+    public static void imprimirMascotasMasCostosas(){
+
+        System.out.println("GATOS MAS COSTOSOS: \n");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-4s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %n", 
+        "Id", "Nombre", "Edad", "Sexo", "Vacunas", "Costo", "Pais", "Dientes", "Color", "Malota", "Leche");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        if(gatosCostosos.size() >= 1){
+        for(Gato gato: gatosCostosos) {
+            System.out.printf("| %-4s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s |%n", 
+            gato.getId(), gato.getNombre(), gato.getEdad() + " anio(s)", gato.getSexo(), gato.getVacunasAplicadas(), gato.getCosto(), gato.getPaisOrigen(), gato.getDientes(), gato.getColor(), gato.isVacunaMalota(), gato.getLecheFavorita());
+            }
+        }else{
+            System.out.println("No hay gatos registrados.");
+        }
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+
+        System.out.print("\n \n");
+
+
+        // Imprimir perros
+        System.out.println("PERROS MAS COSTOSOS: \n");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-4s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %n", "Id", "Nombre", "Edad", "Sexo", "Vacunas", "Costo", "Pais", "Dientes", "Color", "Malota", "Caminatas");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        if(perrosCostosos.size() >= 1){
+            for(Perro perro: perrosCostosos) {
+                System.out.printf("| %-4s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s |%n", 
+                perro.getId(), perro.getNombre(), perro.getEdad() + " anio(s)", perro.getSexo(), perro.getVacunasAplicadas(), perro.getCosto(), perro.getPaisOrigen(), perro.getDientes(), perro.getColor(), perro.isVacunaMalota(), perro.getCaminatasPorSemana());
+                }
+            }else{
+                System.out.println("No hay perros registrados.");
+            }
+            System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        
+        System.out.print("\n \n");
+
+        System.out.println("Presione ENTER para volver al menu.");
+        scanner.nextLine();
+        pantallaFinal();
+    }
+
+
+    public static void mascotasNoLatinoamericanas(){
+
+
+        paisesLatam.add("Colombia");
+        paisesLatam.add("Argentina");
+        paisesLatam.add("Bolivia");
+        paisesLatam.add("Brasil");
+        paisesLatam.add("Chile");
+        paisesLatam.add("Costa Rica");
+        paisesLatam.add("Ecuador");
+        paisesLatam.add("El Salvador");
+        paisesLatam.add("Guatemala");
+        paisesLatam.add("Honduras");
+        paisesLatam.add("Mexico");
+        paisesLatam.add("Nicaragua");
+        paisesLatam.add("Cuba");
+        paisesLatam.add("Peru");
+        paisesLatam.add("Paraguay");
+        paisesLatam.add("Uruguay");
+        paisesLatam.add("Venezuela");
+        paisesLatam.add("Cuba");
+        paisesLatam.add("Panama");
+        paisesLatam.add("Pueto Rico");
+        paisesLatam.add("Surinam");
+        paisesLatam.add("Guyana");
+        paisesLatam.add("Jamaica");
+        paisesLatam.add("Haiti");
+        paisesLatam.add("Guyana Francesa");
+        paisesLatam.add("Granada");
+        paisesLatam.add("Republica Dominicana");
+
+
+        System.out.println("******************************************************************************************************************************************");
+        // Imprimir gatos
+        System.out.println("GATOS NO LATINOAMERICANOS: \n");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-4s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %n", 
+        "Id", "Nombre", "Edad", "Sexo", "Vacunas", "Costo", "Pais", "Dientes", "Color", "Malota", "Leche");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        if(gatos.size() >= 1){
+        for(Gato gato: gatos) {
+
+            if(!(paisesLatam.contains(gato.getPaisOrigen()))){
+            System.out.printf("| %-4s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s |%n", 
+            gato.getId(), gato.getNombre(), gato.getEdad() + " anio(s)", gato.getSexo(), gato.getVacunasAplicadas(), gato.getCosto(), gato.getPaisOrigen(), gato.getDientes(), gato.getColor(), gato.isVacunaMalota(), gato.getLecheFavorita());
+            }
+        }
+
+        }else{
+            System.out.println("No se encontraron gatos.");
+        }
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+
+        System.out.print("\n \n");
+
+
+        // Imprimir perros
+        System.out.println("PERROS NO LATINOAMERICANOS: \n");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-4s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %n", "Id", "Nombre", "Edad", "Sexo", "Vacunas", "Costo", "Pais", "Dientes", "Color", "Malota", "Caminatas");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        if(perros.size() >= 1){
+            for(Perro perro: perros) {
+
+                if(!(paisesLatam.contains(perro.getPaisOrigen()))){
+                System.out.printf("| %-4s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s |%n", 
+                perro.getId(), perro.getNombre(), perro.getEdad() + " anio(s)", perro.getSexo(), perro.getVacunasAplicadas(), perro.getCosto(), perro.getPaisOrigen(), perro.getDientes(), perro.getColor(), perro.isVacunaMalota(), perro.getCaminatasPorSemana());
+                }}
+            }else{
+                System.out.println("No se encontraron perros.");
+            }
+            System.out.println("------------------------------------------------------------------------------------------------------------------------------------------");
+        
+        System.out.print("\n \n");
+        
+        System.out.println("Presione ENTER para volver al menu.");
+        scanner.nextLine();
+        pantallaFinal();
+    }
+
+
+    public static void pantallaFinal(){
+
+        clrscr();
+        System.out.print("\n1. Ver mascotas con Malota.\n"+
+                           "2. Ver mascotas no latinoamericanas.\n"+
+                           "3. Ver mascotas mas costosas.\n"+
+                           "4. Salir.\n"+
+                           "\nSeleccione su opcion: ");
+
+        opcion = scanner.nextInt();
+        scanner.nextLine();       
+
+        if(opcion == 1){
+            clrscr();
+            mascotasConMalota();
+        }else if(opcion == 2){
+            clrscr();
+            mascotasNoLatinoamericanas();
+        }else if(opcion == 3){
+            clrscr();
+            mascotasMasCostosas();
+            imprimirMascotasMasCostosas();
+        }else if(opcion == 4){
+            System.exit(0);
+        }else{
+            System.out.println("Opcion no valida.");
+            scanner.nextLine();
+            pantallaFinal();
+        }
+    }
+
+    public static Gato gatoMasCostoso() {
+        float costoMasAlto = -1;
+        int indiceDeMasAlto = -1;
+        for(int i = 0; i < gatos.size(); i++) {
+            if(gatos.get(i).getCosto() >= costoMasAlto) {
+                indiceDeMasAlto = i;
+            }
+        }
+        return gatos.get(indiceDeMasAlto);
+    }
+
+    public static Perro perroMasCostoso() {
+        float costoMasAlto = -1;
+        int indiceDeMasAlto = -1;
+        for(int i = 0; i < perros.size(); i++) {
+            if(perros.get(i).getCosto() >= costoMasAlto) {
+                indiceDeMasAlto = i;
+            }
+        }
+        return perros.get(indiceDeMasAlto);
+    }
+
     public static void clrscr(){
 
         //Metodo para limpiar consola (cls)
