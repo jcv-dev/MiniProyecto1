@@ -15,7 +15,7 @@ public class App {
     static int tipoMascota, opcion = 0, seleccionBooleano;
     static float costoMascota;
     static boolean vacunaMalota;
-    static byte edadMascota, dientesMascota, vacunasMascota, caminatasMascota;
+    static byte edadMascota, dientesMascota, vacunasMascota, caminatasMascota, idMascota;
 
 
     public static void menuPrincipal() {
@@ -123,14 +123,14 @@ public class App {
             System.out.print("Leche favorita: ");
             lecheFavorita = scanner.nextLine();
 
-            Gato gato = new Gato(nombreMascota, edadMascota, vacunasMascota, costoMascota, paisMascota, dientesMascota, colorMascota, vacunaMalota, sexoMascota, lecheFavorita, id);
+            Gato gato = new Gato(nombreMascota, edadMascota, vacunasMascota, costoMascota, paisMascota, dientesMascota, colorMascota, vacunaMalota, sexoMascota, lecheFavorita, idMascota);
             gatos.add(gato);
 
             case 2:
             System.out.print("Cantidad de caminatas por semana: ");
             caminatasMascota = scanner.nextByte();
 
-            Perro perro = new Perro(nombreMascota, edadMascota, vacunasMascota, costoMascota, paisMascota, dientesMascota, colorMascota, vacunaMalota, sexoMascota, caminatasMascota, id);
+            Perro perro = new Perro(nombreMascota, edadMascota, vacunasMascota, costoMascota, paisMascota, dientesMascota, colorMascota, vacunaMalota, sexoMascota, caminatasMascota, idMascota);
             perros.add(perro);
         }
     }
